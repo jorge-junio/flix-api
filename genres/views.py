@@ -1,9 +1,26 @@
+from rest_framework import generics
+from genres.models import Genre
+from genres.serializers import GenreSerializer
+
+
+class GenreListCreateView(generics.ListCreateAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+
+
+class GenreRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Genre.objects.all()
+    serializer_class = GenreSerializer
+
+
+"""
+como ficaria se usássemos só funções como view
+
 import json
 from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import get_object_or_404
 from genres.models import Genre
-
 
 @csrf_exempt
 def genre_create_list_view(request):
@@ -37,6 +54,5 @@ def genre_detail_view(request, pk):
 
     elif request.method == 'DELETE':
         genre.delete()
-        return JsonResponse(
-            {'message': 'Gênero excluído com sucesso.'},
-            status=204)
+        return JsonResponse(status=204)
+"""
