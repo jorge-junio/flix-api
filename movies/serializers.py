@@ -6,7 +6,7 @@ from actors.models import Actor
 
 
 class MovieModelSerializer(serializers.ModelSerializer):
-    rate = serializers.SerializerMethodField(ready_only=True)
+    rate = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
         model = Movie
