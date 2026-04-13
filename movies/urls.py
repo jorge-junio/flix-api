@@ -7,4 +7,5 @@ urlpatterns = [
          name='movie-collection'),
     path('movies/<int:pk>/', views.MovieRetrieveUpdateDestroyView.as_view(),
          name='movie-resource'),
+    path('movies/stats/', views.MovieStatsView.as_view(), name='movie-stats'),
 ]
